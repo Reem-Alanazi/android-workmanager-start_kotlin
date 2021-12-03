@@ -25,6 +25,8 @@ class BlurWorker (ctx : Context, params :WorkerParameters) : Worker(ctx,params) 
 
         makeStatusNotification("Blurring image", appContext)
 
+        sleep()
+
         return try {
 //            val picture = BitmapFactory.decodeResource(
 //                appContext.resources,
@@ -44,8 +46,6 @@ class BlurWorker (ctx : Context, params :WorkerParameters) : Worker(ctx,params) 
 
             // Write bitmap to a temp file
             val outputUri = writeBitmapToFile(appContext, output)
-
-         //   makeStatusNotification("Output is $outputUri", appContext)
 
             val outputData = workDataOf(KEY_IMAGE_URI to outputUri.toString())
 
